@@ -1,0 +1,12 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&display=swap');
+@tailwind base; 
+@tailwind components; 
+@tailwind utilities; 
+.fade-in {
+    opacity: 0;
+    transition: opacity 100s ease-in-out;
+  }
+  
+  .fade-in.active {
+    opacity: 1;
+  }
