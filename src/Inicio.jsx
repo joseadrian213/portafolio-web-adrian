@@ -20,6 +20,20 @@ export default function Inicio() {
 
   const projects = [
     {
+      href: "https://iztapalapa3-my.sharepoint.com/:b:/g/personal/l181100037_iztapalapa3_tecnm_mx/ETso7yZT0gFEt7Muir58uhEBFOvOSVhSIDfnSPpBAXeErg?e=KLAcpw",
+      src: "./../imagen-portafolio/recargas.webp",
+      alt: "Recargas y Pagos de Servicios",
+      title: "Laravel, Livewire y TailwindCSS",
+      description: "Manual del usuario para la correcta utilización de la aplicación web."
+    },
+    {
+      href: "https://iztapalapa3-my.sharepoint.com/:v:/g/personal/l181100037_iztapalapa3_tecnm_mx/EZYb_S3kSP1Nuj4yV1Oo3QgBo08-FeXFlcQ-j5zBL-kutA?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0NvcHkifX0&e=jm8tJw",
+      src: "./../imagen-portafolio/AvancesVentas.webp",
+      alt: "Avances De Migración Sistema Farmacia",
+      title: "Laravel, React y TailwindCSS",
+      description: "Vídeo de evidencia que demuestra los progresos realizados en los módulos de búsqueda de artículos y ventas."
+    },
+    {
       href: "https://recetas-cocteles.netlify.app/",
       src: "./../imagen-portafolio/bebidas.webp",
       alt: "Recetas de Cocteles React",
@@ -120,7 +134,7 @@ export default function Inicio() {
     document.title = 'Portafolio';
     const iconLink = document.createElement('link');
     iconLink.rel = 'icon';
-    iconLink.href = './../fondos/portafolioIcono.ico'; // Reemplaza 'ruta-del-icono' con la ruta de tu ícono
+    iconLink.href = './../fondos/portafolioIcono.ico'; 
     document.head.appendChild(iconLink);
 
     // Limpiar el icono cuando el componente se desmonte
@@ -183,13 +197,13 @@ export default function Inicio() {
             <div className="md:w-1/2 lg:w-3/4 flex flex-col w-full mx-auto lg:flex-row gap-4 justify-center items-center p-5">
               <div className="animate-slide-in">
                 <img
-                  src="./../img-perfil/img-perfil.jpeg"
+                  src="./../img-perfil/img-perfil.webp"
                   alt="Perfil"
                   className="w-44"
                 />
               </div>
               <div className="w-full text-center animate-slide-out p-4 md:p-8">
-                <p className="text-white text-lg lg:text-xl font-display font-bold md:font-extrabold">
+                <p className="text-white text-lg  lg:text-2xl font-display font-bold md:font-extrabold">
                   {texto}
                 </p>
               </div>
