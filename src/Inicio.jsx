@@ -1,76 +1,23 @@
-
 import { useState, useEffect } from "react";
-import Imagenes from "./Imagenes";
+import Imagenes from "./components/Imagenes";
 import AliceCarousel from "react-alice-carousel";
 import "react-alice-carousel/lib/alice-carousel.css"; // Importa la hoja de estilos
-import { Link } from "react-router-dom";
-import LazyLoad from 'react-lazyload'; // Importar react-lazyload
-
+import LazyLoad from "react-lazyload"; // Importar react-lazyload
+import Header from "./components/Header";
+import { projects } from "./data";
 export default function Inicio() {
-  const [desplegado, setDesplegado] = useState(false);
   const [showElements, setShowElements] = useState(false);
 
   useEffect(() => {
     setShowElements(true);
   }, []);
 
-  const manejarClic = () => {
-    setDesplegado(!desplegado);
-  };
-
-  const projects = [
-    {
-      href: "https://iztapalapa3-my.sharepoint.com/:b:/g/personal/l181100037_iztapalapa3_tecnm_mx/ETso7yZT0gFEt7Muir58uhEBFOvOSVhSIDfnSPpBAXeErg?e=KLAcpw",
-      src: "./../imagen-portafolio/recargas.webp",
-      alt: "Recargas y Pagos de Servicios",
-      title: "Laravel, Livewire y TailwindCSS",
-      description: "Manual del usuario para la correcta utilización de la aplicación web."
-    },
-    {
-      href: "https://iztapalapa3-my.sharepoint.com/:v:/g/personal/l181100037_iztapalapa3_tecnm_mx/EZYb_S3kSP1Nuj4yV1Oo3QgBo08-FeXFlcQ-j5zBL-kutA?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0NvcHkifX0&e=jm8tJw",
-      src: "./../imagen-portafolio/AvancesVentas.webp",
-      alt: "Avances De Migración Sistema Farmacia",
-      title: "Laravel, React y TailwindCSS",
-      description: "Vídeo de evidencia que demuestra los progresos realizados en los módulos de búsqueda de artículos y ventas."
-    },
-    {
-      href: "https://recetas-cocteles.netlify.app/",
-      src: "./../imagen-portafolio/bebidas.webp",
-      alt: "Recetas de Cocteles React",
-      title: "React",
-      description: "Aplicación de recetas de cócteles. Busca por bebida y obtiene información desde una API."
-    },
-    {
-      href: "https://cotizador-cripto-reactstyledcomponent.netlify.app/",
-      src: "./../imagen-portafolio/criptomonedas-api.webp",
-      alt: "Cotizador de Criptomonedas React",
-      title: "React",
-      description: "Cotizador del valor actual de las criptomonedas más relevantes utilizando datos de una API, con la opción de seleccionar la moneda del país."
-    },
-    {
-      href: "https://crm-clientes-con-indexedb.netlify.app/",
-      src: "./../imagen-portafolio/crm-indexedb.webp",
-      alt: "CRM con IndexedDB JavaScript",
-      title: "JavaScript",
-      description: "CRM para el registro y gestión de usuarios. Los datos son editables y se almacenan en IndexedDB."
-    },
-    {
-      href: "https://buscador-con-filters.netlify.app/",
-      src: "./../imagen-portafolio/buscador-autos-filter.webp",
-      alt: "Buscador de Autos",
-      title: "JavaScript, Tailwind CSS",
-      description: "Buscador de autos utilizando JavaScript y filtros para encontrar el vehículo deseado."
-    }
-  ];
-
   const renderProjectItem = (project, index) => (
     <div key={index} className="project-item">
-      <h3 className="project-title text-center text-white text-lg lg:text-xl font-display font-bold md:font-extrabold">{project.title}</h3>
-      <a
-        href={project.href}
-        target="_blank"
-        rel="noopener noreferrer"
-      >
+      <h3 className="project-title text-center text-white text-lg lg:text-xl font-display font-bold md:font-extrabold">
+        {project.title}
+      </h3>
+      <a href={project.href} target="_blank" rel="noopener noreferrer">
         <div className="relative">
           <LazyLoad height={200} offset={100} once>
             <img
@@ -83,10 +30,12 @@ export default function Inicio() {
           <div className="absolute rounded-lg inset-0 bg-gradient-to-t from-transparent via-transparent to-black opacity-40"></div>
         </div>
       </a>
-      <p className="project-description  text-center text-white text-lg lg:text-xl font-display font-bold md:font-extrabold">{project.description}</p>
+      <p className="project-description  text-center text-white text-lg lg:text-xl font-display font-bold md:font-extrabold">
+        {project.description}
+      </p>
     </div>
   );
-  
+
   const CustomPrevButton = () => (
     <img
       className="mt-0 mx-auto w-16 md:w-20"
@@ -129,12 +78,11 @@ export default function Inicio() {
     }
   }, [ejecutado]);
 
-  const [hideHeader, setHideHeader] = useState(false);
   useEffect(() => {
-    document.title = 'Portafolio';
-    const iconLink = document.createElement('link');
-    iconLink.rel = 'icon';
-    iconLink.href = './../fondos/portafolioIcono.ico'; 
+    document.title = "Portafolio";
+    const iconLink = document.createElement("link");
+    iconLink.rel = "icon";
+    iconLink.href = "./../fondos/portafolioIcono.ico";
     document.head.appendChild(iconLink);
 
     // Limpiar el icono cuando el componente se desmonte
@@ -145,55 +93,7 @@ export default function Inicio() {
 
   return (
     <>
-      <header
-        className={`flex w-full justify-between bg-black p-5 ${hideHeader ? "hidden" : ""}`}
-        style={{ position: "sticky", top: 0, zIndex: 999 }}
-      >
-        <h2 className="text-white font-extrabold text-3xl">:D</h2>
-        <div className="flex flex-row gap-5 items-center">
-          <a
-            href="https://iztapalapa3-my.sharepoint.com/:b:/g/personal/l181100037_iztapalapa3_tecnm_mx/ESQ5Cd3KhcxOlQSYc2FcpUwBI5mIqnWNWQHUDBVVGNg_gQ?e=f4K1jZ"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-white text-3xl font-bold"
-          >
-            CV
-          </a>
-          <a
-            href="https://github.com/joseadrian213"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <img
-              className="w-9"
-              src="./icons-contacto/github-white.svg"
-              alt="github"
-            />
-          </a>
-          <a
-            href="https://wa.me/525573297524"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <img
-              className="w-9"
-              src="./icons-contacto/whatsapp-icon.svg"
-              alt="WhatsApp"
-            />
-          </a>
-          <a
-            href="mailto:joseadriangonzalez6758@gmail.com"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <img
-              className="w-9"
-              src="./icons-contacto/google-gmail.svg"
-              alt="Gmail"
-            />
-          </a>
-        </div>
-      </header>
+      <Header />
       <main
         style={{
           background: "linear-gradient(#d1d5db, black)",
@@ -207,10 +107,17 @@ export default function Inicio() {
           <div className="curso">
             <div className="md:w-1/2 lg:w-3/4 flex flex-col w-full mx-auto lg:flex-row gap-4 justify-center items-center p-5">
               <div className="animate-slide-in">
+           
                 <img
-                  src="./../img-perfil/img-perfil.webp"
+                  src="/public/img-perfil/img-perfil.webp"
                   alt="Perfil"
                   className="w-44"
+                  style={{
+                    transition: "opacity 0.5s",
+                    opacity: "0",
+                    backgroundColor: "#f0f0f0",
+                  }}
+                  onLoad={(e) => (e.target.style.opacity = "1")}
                 />
               </div>
               <div className="w-full text-center animate-slide-out p-4 md:p-8">
@@ -223,7 +130,8 @@ export default function Inicio() {
           {ejecutado && (
             <div className="flex flex-col items-center justify-center">
               <p className="text-white font-display font-bold text-center text-2xl sm:text-3xl md:text-4xl lg:text-5xl mb-10">
-                Tecnologías utilizadas en los proyectos y en las que tengo experiencia
+                Tecnologías utilizadas en los proyectos y en las que tengo
+                experiencia
               </p>
               <div className="w-full md:w-1/2 mt-3 mx-auto rounded-lg">
                 <Imagenes setMostrarProyectos={setMostrarProyectos} />
@@ -241,15 +149,11 @@ export default function Inicio() {
                   items={projects.map(renderProjectItem)}
                   stagePadding={{ paddingLeft: 50, paddingRight: 50 }}
                   responsive={{ 0: { items: 1 } }} // Muestra solo 1 elemento a la vez
-                  renderPrevButton={() =>( 
-                     <CustomPrevButton />
-                     
-                     )}
+                  renderPrevButton={() => <CustomPrevButton />}
                   renderNextButton={() => <CustomNextButton />}
                   keyboardNavigation
                   touchTracking
                   autoPlay
-              
                   autoPlayStrategy="none"
                   autoPlayInterval={3000}
                   animationDuration={1000}
