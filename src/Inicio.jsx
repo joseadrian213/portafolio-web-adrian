@@ -107,9 +107,9 @@ export default function Inicio() {
           <div className="curso">
             <div className="md:w-1/2 lg:w-3/4 flex flex-col w-full mx-auto lg:flex-row gap-4 justify-center items-center p-5">
               <div className="animate-slide-in">
-           
+                
                 <img
-                  src="/public/img-perfil/img-perfil.webp"
+                  src="./../img-perfil/img-perfil.webp"
                   alt="Perfil"
                   className="w-44"
                   style={{
